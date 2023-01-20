@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdut.boot.mapper.CoachStuMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdut.boot.entity.CoachStu">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="coachId" column="coach_id" jdbcType="INTEGER"/>
+            <result property="stuId" column="stu_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,coach_id,stu_id
+    </sql>
+
+    <insert id="insertByCoachSet" parameterType="map">
+        <foreach collection="integers" item="list" separator=";">
+            insert into coach_stu values (0, #{list}, #{stuId})
+        </foreach>
+    </insert>
+
+    <insert id="insertByStuList" parameterType="map">
+        <foreach collection="keySet" item="list" separator=";">
+            insert into coach_stu values (0, #{id}, #{list})
+        </foreach>
+    </insert>
+</mapper>

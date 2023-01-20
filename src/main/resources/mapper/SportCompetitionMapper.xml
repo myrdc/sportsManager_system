@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdut.boot.mapper.SportCompetitionMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdut.boot.entity.SportCompetition">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="number" column="number" jdbcType="VARCHAR"/>
+            <result property="competitionName" column="competition_name" jdbcType="VARCHAR"/>
+            <result property="competitionTime" column="competition_time" jdbcType="VARCHAR"/>
+            <result property="contentId" column="content_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,number,competition_name,
+        competition_time,content_id
+    </sql>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdut.boot.mapper.CoachCompetitionMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdut.boot.entity.CoachCompetition">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="number" column="number" jdbcType="VARCHAR"/>
+            <result property="competitionId" column="competition_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,number,competition_id
+    </sql>
+</mapper>

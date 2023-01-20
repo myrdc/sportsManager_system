@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdut.boot.mapper.EntranceExamMsgMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdut.boot.entity.EntranceExamMsg">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="number" column="number" jdbcType="VARCHAR"/>
+            <result property="examProvinces" column="exam_provinces" jdbcType="VARCHAR"/>
+            <result property="examPrefecture" column="exam_prefecture" jdbcType="VARCHAR"/>
+            <result property="admissionTicketNumber" column="admission_ticket_number" jdbcType="VARCHAR"/>
+            <result property="inSchool" column="in_school" jdbcType="VARCHAR"/>
+            <result property="idCard" column="id_card" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,number,exam_provinces,
+        exam_prefecture,admission_ticket_number,in_school,
+        id_card
+    </sql>
+</mapper>

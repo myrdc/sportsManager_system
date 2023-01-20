@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdut.boot.mapper.SecondOrganizationMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdut.boot.entity.SecondOrganization">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="oneOrg" column="one_org" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,one_org
+    </sql>
+    <select id="selectByNames" resultType="com.gdut.boot.entity.SecondOrganization">
+        select * from second_organization where `name` in
+        <foreach collection="names" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectByIds" resultType="com.gdut.boot.entity.SecondOrganization">
+        select * from second_organization where `id` in
+        <foreach collection="ids" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectByCoachId" resultType="com.gdut.boot.entity.SecondOrganization">
+        select * from second_organization  as s
+                          left join se_organization_coach as c
+                                    on s.id = c.second_organization
+        where c.coach_id = #{coachId}
+    </select>
+</mapper>

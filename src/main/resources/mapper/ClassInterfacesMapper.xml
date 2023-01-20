@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdut.boot.mapper.ClassInterfacesMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdut.boot.entity.ClassInterfaces">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="clazz" column="clazz" jdbcType="VARCHAR"/>
+            <result property="clazzInterface" column="clazz_interface" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,clazz,clazz_interface
+    </sql>
+</mapper>

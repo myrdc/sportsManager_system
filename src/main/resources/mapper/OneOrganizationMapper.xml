@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdut.boot.mapper.OneOrganizationMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdut.boot.entity.OneOrganization">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="simpleName" column="simple_name" jdbcType="VARCHAR"/>
+            <result property="engName" column="eng_name" jdbcType="VARCHAR"/>
+            <result property="code" column="code" jdbcType="VARCHAR"/>
+            <result property="chargeLeader" column="charge_leader" jdbcType="VARCHAR"/>
+            <result property="departmentLeader" column="department_leader" jdbcType="VARCHAR"/>
+            <result property="savePlace" column="save_place" jdbcType="VARCHAR"/>
+            <result property="savePlaceChoice" column="save_place_choice" jdbcType="INTEGER"/>
+            <result property="details" column="details" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,simple_name,
+        eng_name,code,charge_leader,
+        department_leader,save_place,save_place_choice,
+        details
+    </sql>
+
+    <select id="listByNames" resultType="com.gdut.boot.entity.OneOrganization">
+        select * from one_organization where `name` in
+        <foreach collection="names" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

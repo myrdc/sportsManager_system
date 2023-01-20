@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdut.boot.mapper.NoticeMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdut.boot.entity.Notice">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="to" column="to" jdbcType="VARCHAR"/>
+            <result property="message" column="message" jdbcType="VARCHAR"/>
+            <result property="from" column="from" jdbcType="VARCHAR"/>
+            <result property="read" column="read" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,to,message,
+        from,read
+    </sql>
+</mapper>

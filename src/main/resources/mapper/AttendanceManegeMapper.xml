@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdut.boot.mapper.AttendanceManegeMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdut.boot.entity.AttendanceManege">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="department" column="department" jdbcType="VARCHAR"/>
+            <result property="date" column="date" jdbcType="VARCHAR"/>
+            <result property="stuNumber" column="stu_number" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="attendanceList" column="attendance_list" jdbcType="VARCHAR"/>
+            <result property="sum" column="sum" jdbcType="INTEGER"/>
+            <result property="note" column="note" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,department,date,
+        stu_number,name,attendance_list,
+        sum,note
+    </sql>
+</mapper>

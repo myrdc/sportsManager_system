@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdut.boot.mapper.CompetitionManageMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdut.boot.entity.CompetitionManage">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="desgination" column="desgination" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="coach" column="coach" jdbcType="VARCHAR"/>
+            <result property="leader" column="leader" jdbcType="VARCHAR"/>
+            <result property="competitionTime" column="competition_time" jdbcType="VARCHAR"/>
+            <result property="competitionProject" column="competition_project" jdbcType="VARCHAR"/>
+            <result property="competitionPlace" column="competition_place" jdbcType="VARCHAR"/>
+            <result property="results" column="results" jdbcType="VARCHAR"/>
+            <result property="competitionLevel" column="competition_level" jdbcType="VARCHAR"/>
+            <result property="resultsBook" column="results_book" jdbcType="VARCHAR"/>
+            <result property="orderBook" column="order_book" jdbcType="VARCHAR"/>
+            <result property="competitionPicture" column="competition_picture" jdbcType="VARCHAR"/>
+            <result property="resultsCertificate" column="results_certificate" jdbcType="VARCHAR"/>
+            <result property="prizesPicture" column="prizes_picture" jdbcType="VARCHAR"/>
+            <result property="state" column="state" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,desgination,name,
+        coach,leader,competition_time,
+        competition_project,competition_place,results,
+        competition_level,results_book,order_book,
+        competition_picture,results_certificate,prizes_picture,
+        state
+    </sql>
+
+    <select id="selectByNumber" resultType="com.gdut.boot.entity.CompetitionManage">
+        select * from competition_manage as c
+        left join coach_competition as cc
+        on c.id = cc.competition_id
+        where cc.number = #{number}
+        and c.state = #{state}
+    </select>
+</mapper>

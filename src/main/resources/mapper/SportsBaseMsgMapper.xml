@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdut.boot.mapper.SportsBaseMsgMapper">
+
+    <resultMap id="BaseResultMap" type="com.gdut.boot.entity.SportsBaseMsg">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="schoolName" column="school_name" jdbcType="VARCHAR"/>
+            <result property="sportProject" column="sport_project" jdbcType="VARCHAR"/>
+            <result property="chineseName" column="chinese_name" jdbcType="VARCHAR"/>
+            <result property="group" column="group" jdbcType="VARCHAR"/>
+            <result property="usedName" column="used_name" jdbcType="VARCHAR"/>
+            <result property="gender" column="gender" jdbcType="INTEGER"/>
+            <result property="nation" column="nation" jdbcType="VARCHAR"/>
+            <result property="birth" column="birth" jdbcType="VARCHAR"/>
+            <result property="birthPlace" column="birth_place" jdbcType="VARCHAR"/>
+            <result property="nativePlace" column="native_place" jdbcType="VARCHAR"/>
+            <result property="high" column="high" jdbcType="VARCHAR"/>
+            <result property="weight" column="weight" jdbcType="VARCHAR"/>
+            <result property="idCardType" column="id_card_type" jdbcType="VARCHAR"/>
+            <result property="idCardNumber" column="id_card_number" jdbcType="VARCHAR"/>
+            <result property="idCardPlace" column="id_card_place" jdbcType="VARCHAR"/>
+            <result property="acceptanceLevel" column="acceptance_level" jdbcType="VARCHAR"/>
+            <result property="picture" column="picture" jdbcType="VARCHAR"/>
+            <result property="acceptanceType" column="acceptance_type" jdbcType="VARCHAR"/>
+            <result property="entranceTime" column="entrance_time" jdbcType="VARCHAR"/>
+            <result property="originalSchool" column="original_school" jdbcType="VARCHAR"/>
+            <result property="totalCulturalScore" column="total_cultural_score" jdbcType="INTEGER"/>
+            <result property="takingProfessional" column="taking_professional" jdbcType="VARCHAR"/>
+            <result property="ingCollege" column="ing_college" jdbcType="VARCHAR"/>
+            <result property="levelClass" column="level_class" jdbcType="VARCHAR"/>
+            <result property="examinationPlace" column="examination_place" jdbcType="VARCHAR"/>
+            <result property="addedScore" column="added_score" jdbcType="INTEGER"/>
+            <result property="studentCardNum" column="student_card_num" jdbcType="VARCHAR"/>
+            <result property="belongCoach" column="belong_coach" jdbcType="VARCHAR"/>
+            <result property="studentCard" column="student_card" jdbcType="VARCHAR"/>
+            <result property="examProvinces" column="exam_provinces" jdbcType="VARCHAR"/>
+            <result property="examPrefecture" column="exam_prefecture" jdbcType="VARCHAR"/>
+            <result property="admissionTicketNumber" column="admission_ticket_number" jdbcType="VARCHAR"/>
+            <result property="inSchool" column="in_school" jdbcType="INTEGER"/>
+            <result property="idCard" column="id_card" jdbcType="VARCHAR"/>
+            <result property="competitionName" column="competition_name" jdbcType="VARCHAR"/>
+            <result property="competitionTime" column="competition_time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,school_name,sport_project,
+        chinese_name,group,used_name,
+        gender,nation,birth,
+        birth_place,native_place,high,
+        weight,id_card_type,id_card_number,
+        id_card_place,acceptance_level,picture,
+        acceptance_type,entrance_time,original_school,
+        total_cultural_score,taking_professional,ing_college,
+        level_class,examination_place,added_score,
+        student_card_num,belong_coach,student_card,
+        exam_provinces,exam_prefecture,admission_ticket_number,
+        in_school,id_card,competition_name,
+        competition_time
+    </sql>
+
+    <select id="listByNames" resultType="com.gdut.boot.entity.SportsBaseMsg">
+        select * from sports_base_msg where chinese_name in
+        <foreach collection="names" separator="," open="(" close=")" item="item">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectBySeId" resultType="com.gdut.boot.entity.SportsBaseMsg">
+        select * from sports_base_msg  as s
+                          left join se_organization_student as c
+                                    on s.id = c.student_id
+        where c.second_organization = #{coachId}
+    </select>
+</mapper>
